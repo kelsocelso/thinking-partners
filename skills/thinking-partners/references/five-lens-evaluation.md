@@ -2,17 +2,148 @@
 
 The default playbook for Evaluate Mode. Use when the user asks "what do you think of this", "is this any good", "should I build this", or wants a structured assessment.
 
-Goal: produce an honest verdict in ~5–10 minutes of thinking, not a 30-page report. Be specific to the user's actual product, industry, and situation.
+Goal: produce an honest verdict in ~5–10 minutes of thinking, not a 30-page report. Be specific to the user's actual product, industry, and situation. **Discovery before verdict** — never rate on partial data.
 
 ---
 
 ## How to run it
 
-1. **Detect the domain.** Is this consumer app, enterprise SaaS, biotech, hardware, fintech, marketplace, creator economy, climate, AI/deep tech, education, retail/DTC, hospitality? The lenses adapt to the domain — what "Market" means for a biotech is different from what it means for a mobile game.
-2. **Restate what you're evaluating in one sentence.** Force precision. If you can't restate cleanly, ask one clarifying question before going further.
-3. **Run each of the 5 lenses.** 1–3 sentences per lens. Cite the user's actual context.
-4. **Score each lens informally:** 🟢 strong / 🟡 mixed / 🔴 weak.
-5. **End with a verdict + biggest single risk.**
+The flow is **Discovery → Score → Verdict.** Don't skip discovery to get to the verdict faster.
+
+1. **Detect the domain.** Is this consumer app, enterprise SaaS, biotech, hardware, fintech, marketplace, creator economy, climate, AI/deep tech, education, retail/DTC, hospitality? The lenses adapt to the domain.
+2. **Restate what you're evaluating in one sentence.** Force precision. If you can't restate cleanly, ask one clarifying question first.
+3. **Offer the path.** "Full discovery (5–10 min of questions, real verdict) or quick directional read (low-confidence, based on what you've already said)?" Honor the choice.
+4. **Run the Discovery flow** (next section) until the minimum data gate is filled.
+5. **Score each lens** 🟢 strong / 🟡 mixed / 🔴 weak — with one specific reason each.
+6. **Render the recommendation** (🟢 Green / 🟡 Yellow / 🔴 Red) in the format below.
+
+---
+
+## Discovery: questions before verdict
+
+**Principle:** the verdict is only as good as the data behind it. Ask before you assess. Use the AskUserQuestion tool (when available) for closed/structured items — give 4 options plus an "Other" escape hatch. Use open-ended prompts for the things the user needs to articulate in their own words (wedge, moat thesis, why-now). Always explain the concept in one line *before* asking — most users haven't internalized these definitions.
+
+**Be progressive, not a survey.** Ask 2–4 questions per round. React to the answers. Pull threads. Don't dump all 15 questions at once.
+
+### Context questions (load first — they shape everything)
+
+**Stage** *(use AskUserQuestion)*
+"Where are you in the build?"
+- Pre-idea (still deciding what to work on)
+- Idea, not built
+- Building, pre-launch
+- Launched, pre-PMF
+- Launched with traction
+- Scaling
+
+**Business model** *(use AskUserQuestion)*
+"How does this make money?"
+- Subscription
+- Transactional / per-use
+- Marketplace fee
+- Ads
+- Hardware sale
+- Services / consulting
+- Other (describe)
+
+**Target customer** *(open-ended — force specificity)*
+"Who's the customer? Be specific — 'busy moms 30–45 using fitness apps' beats 'health-conscious people.' If the answer is 'everyone,' the wedge isn't real yet."
+
+**Investment so far** *(use AskUserQuestion)*
+"How much have you put into this?"
+- Just time, no money
+- Under $10k
+- $10k–$100k
+- $100k–$1M
+- $1M+
+
+### Market questions
+
+**Explain first:** "A real market means there are buyers who could plausibly write you a check today — not a TAM slide, a credible bottom-up wedge that compounds."
+
+- *Open:* "Who are your beachhead 100 customers — the first set you can name or describe by archetype?"
+- *Open:* "How are they solving this problem today? What do they pay for currently?"
+- *AskUserQuestion — Why now:* "What changed in the last 18 months that makes this winnable now?"
+  - Tech unlock (LLMs, new API, new platform)
+  - Behavior shift (post-COVID, remote, demographic)
+  - Regulation (new law / deregulation)
+  - Cost curve (something got cheap)
+  - Incumbent failure (someone left a gap)
+  - Honestly, nothing specific changed
+
+### Moat questions
+
+**Explain first:** "A moat is a durable competitive advantage that strengthens with scale. Not a feature. Not better UX. Hamilton Helmer's 7 Powers is the canonical list of what actually counts as one."
+
+- *AskUserQuestion — Map to a Power:* "Which of the 7 Powers is your moat thesis?"
+  - Scale Economies (cost per unit drops with size)
+  - Network Economies (product gets better as more users join)
+  - Switching Costs (users pay a cost to leave)
+  - Branding (durable trust premium)
+  - Cornered Resource (exclusive access — IP, supply, contract)
+  - Counter-Positioning (incumbents structurally can't follow)
+  - Process Power (operational know-how compounds over time)
+  - None yet — competing on execution
+- *Open:* "Describe your moat in one sentence. What's the durable thing?"
+- *Open:* "If a well-funded competitor copies your product feature-for-feature next quarter, what survives?"
+- *Open:* "What gets stronger as you scale?"
+
+### Product / Wedge questions
+
+**Explain first:** "A wedge is the narrow entry point where you win — a specific user, doing a specific job, that no one else does well today. The wedge is what gets you to 1,000 customers. The market is what gets you to 100,000."
+
+- *Open:* "Describe your wedge in one sentence: who, doing what, that no one else does well today?"
+- *AskUserQuestion — Painkiller or vitamin:* "Is this a painkiller or a vitamin for the customer?"
+  - Painkiller — they have an acute, named problem they're actively trying to solve
+  - Vitamin — it's a nice-to-have, would-be-good-to-fix
+  - Honestly unsure
+- *Open:* "What's the 10× claim? What makes this 10× better than the current alternative for this specific user?"
+
+### Distribution questions
+
+**Explain first:** "Distribution is how the first 1,000 — then 100,000 — customers actually find and adopt this. Brian Balfour's frame: market + product + channel + model must all fit together. A great product in the wrong channel dies."
+
+- *AskUserQuestion — Primary channel:* "What's your primary acquisition channel?"
+  - Organic search / SEO
+  - Paid acquisition (ads)
+  - Viral / referral loops
+  - Sales-led (outbound, demos)
+  - Community / content
+  - Partnerships / integrations
+  - Press / influencer
+  - I don't know yet
+- *Open* (if launched): "Have you tested it? What's your rough CAC vs. LTV?"
+- *Open:* "Is your channel saturated or favoring incumbents? Why is it open for you?"
+
+### Customer / Retention questions
+
+**Explain first:** "Pre-launch, 'customer' is a theory about who will love this. Post-launch, it's the most honest signal you have — retention and word-of-mouth beat every other lens combined."
+
+- *AskUserQuestion — PMF signal:* "Where are you on retention / PMF signal?"
+  - Not launched yet
+  - Launched, no retention data yet
+  - Have data, retention is weak
+  - Have data, retention is solid
+  - Have data, retention is exceptional (users telling friends unprompted)
+- *Open:* "Smallest viable audience: who are the 100 people who'd be devastated if this disappeared tomorrow? Do they exist? Can you reach them?"
+- *Open* (if launched): "What are users telling you in their own words right now — quotes if you have them?"
+
+---
+
+## Minimum data gate
+
+**Do not render a recommendation until you have:**
+1. **Stage** (closed)
+2. **Business model** (closed)
+3. **Specific target customer** (not "everyone")
+4. **User's own wedge description** (one sentence, in their words)
+5. **User's own moat thesis** — mapped to a Power, or an honest "none yet, competing on execution"
+6. **One current-state datapoint** OR explicit acknowledgment of "this is pre-data theory"
+
+If any are missing, say what's missing and offer to walk through it:
+> "I'd be guessing without [stage / wedge description / moat thesis / retention signal]. Want to walk through those, or do you want a low-confidence directional read?"
+
+A confident-sounding verdict on five hand-waved lenses is worse than no verdict.
 
 ---
 
@@ -146,16 +277,93 @@ Goal: produce an honest verdict in ~5–10 minutes of thinking, not a 30-page re
 
 ---
 
-## The Verdict
+## The Recommendation
 
-End with one of four stances:
+Once the minimum data gate is filled and you've scored each lens, render the verdict in this exact shape. **Show your work first** — recap what the user told you so they can correct misreads before the call lands.
 
-- **🟢 Go** — All or most lenses strong. State the highest-leverage next move.
-- **🟡 Go with conditions** — Most strong, 1–2 weak. State what has to be true / tested before committing more.
-- **🔴 Kill** — Multiple weak with no clear path. Explain directly. Suggest the pivot if there's one nearby.
-- **❓ Need more info** — Honest answer when the user hasn't given enough. Ask the 1–2 specific questions that would unlock the call.
+### Pre-verdict recap
 
-**Always end with:** "Biggest single risk: [one sentence]."
+> **Based on what you told me:**
+> - Stage: [pre-PMF / launched / etc.]
+> - Model: [subscription / transactional / etc.]
+> - Customer: [specific archetype, in user's own words]
+> - Wedge: [user's one-sentence wedge]
+> - Moat thesis: [Power mapped to, or "none yet"]
+> - Current data: [retention / revenue / "pre-data theory"]
+>
+> *If any of this is wrong, tell me and I'll re-score.*
+
+### Lens scorecard
+
+> - **Market** 🟢/🟡/🔴 — [one-sentence specific reason, citing user's context]
+> - **Moat** 🟢/🟡/🔴 — [one-sentence specific reason]
+> - **Product / Wedge** 🟢/🟡/🔴 — [one-sentence specific reason]
+> - **Distribution** 🟢/🟡/🔴 — [one-sentence specific reason]
+> - **Customer / Retention** 🟢/🟡/🔴 — [one-sentence specific reason]
+
+### Recommendation
+
+Pick one. State it firmly. No theatrics, no hedging.
+
+#### 🟢 Green light — Build it. Scale it. Move with conviction.
+
+> **🟢 Recommendation: Green light.**
+>
+> *Hitting:* [2–4 lenses where they're genuinely strong, named specifically — e.g. "durable moat via Switching Costs from workflow lock-in," "clear painkiller for a named ICP," "non-saturated channel that fits the model"]
+>
+> *Watch:* [1–2 areas that aren't dealbreakers but could become them]
+>
+> *Kill conditions* — what would invalidate this green light in the next 6 months: [1–3 specific events / metrics]
+>
+> *Confidence:* high / medium / low. [One line on what would raise it — usually code access, post-launch data, or a specific customer conversation]
+>
+> *Next move:* [the single highest-leverage thing to do this week or month]
+
+#### 🟡 Yellow light — Proceed, but time-box and define the exit. Don't sink runway on this without a PMF signal.
+
+> **🟡 Recommendation: Yellow light.**
+>
+> *Hitting:* [the lenses strong enough to justify continuing]
+>
+> *Missing or weak:* [the lenses that need to firm up]
+>
+> *The test* — the specific experiment that would move this to green: [concrete metric + deadline. e.g. "Share-rate >15% in 60 days," "10 named ICP customers willing to pay within 90 days," "Retention curve flattens above 20% by month 3"]
+>
+> *Pivot trigger* — what forces a pivot or kill if the test fails: [specific condition]
+>
+> *Confidence:* and what would change it.
+
+#### 🔴 Red light — Don't build in current form. Specific reasons, not vibes.
+
+> **🔴 Recommendation: Red light.**
+>
+> *Why* — the 1–3 structural problems that aren't fixable inside the current frame: [no real moat path / fundamentally crowded market with no wedge / channel doesn't fit model / vitamin not painkiller / something specific to their context]
+>
+> *What's salvageable:* [name the kernel if there's one worth keeping. If there isn't, say so — don't manufacture a pivot to soften the call]
+>
+> *Closest adjacent idea worth exploring:* [only if there's a real one — otherwise omit]
+>
+> *Confidence:* high reds need high confidence. State what evidence drove the call.
+
+### Always end with one line
+
+> *Want me to re-run this if [X] changes — post-launch data, a new channel test, or you sharpen the wedge?*
+
+This turns the verdict into a working document, not a one-shot judgment.
+
+---
+
+## Stage-weighted scoring
+
+Same five lenses, different weights by stage. Don't pretend a pre-launch idea and a $5M-ARR business are evaluated the same way.
+
+- **Pre-idea / idea-stage:** Weight Market and Wedge heaviest. Moat is theoretical — fine to grade it on the *path* to a Power, not the current state. Distribution can be a hypothesis. Customer / Retention is theoretical.
+- **Building, pre-launch:** Wedge and Distribution-fit matter most. Moat path should be clearer. Customer should be specific (named design partners, waitlist quality).
+- **Launched, pre-PMF:** Customer / Retention becomes the dominant signal. Wedge can be re-evaluated against actual user behavior. Distribution: have you tested it, what's CAC?
+- **Launched, with traction:** Moat (is the Power compounding?) and Distribution (does the channel scale, or is CAC climbing?) become the binding constraints.
+- **Scaling:** Process Power, Brand, and unit economics dominate. Wedge is mostly historical.
+
+---
 
 ---
 
@@ -178,22 +386,42 @@ End with one of four stances:
 
 **Biggest single risk:** 4–6 weeks building social infrastructure that solves a retention problem actually shaped like onboarding.
 
-### Example 2: Enterprise SaaS
+### Example 2: Enterprise SaaS (full new format)
 
 > **User:** "Should I build an AI agent for SOC analysts to triage alerts?"
 
-**Domain:** enterprise security, AI-native B2B.
-**Restated:** AI agent that automates Tier 1 alert triage in a SOC, surfacing high-confidence escalations to humans.
+**After discovery, you have:** Stage = idea, pre-build. Model = enterprise subscription. Customer = mid-market CISOs at companies with 50–500-person eng orgs. Wedge (user's words): "tier-1 alert triage for SOCs without dedicated AI engineers." Moat thesis: Switching Costs (agent learns the customer's environment) + Process Power over time. Data: zero — pre-launch theory.
 
-- **Market** 🟢 — Real budget (security ops), growing fast (alert volume explosion), and an obvious painkiller (analyst burnout is a known problem).
-- **Moat** 🟡 — Process Power and Switching Costs possible long-term (your agent gets better as it learns the customer's environment). Early on, you're racing well-funded incumbents (CrowdStrike, Palo Alto) who can add AI to existing platforms.
-- **Product** 🟢 — JTBD is clear: "reduce my analyst headcount need by 30% without missing real threats." Painkiller, not vitamin.
-- **Distribution** 🔴 — Enterprise security sale is 6–12 months, multi-stakeholder, requires SOC2/compliance proof. Slow GTM is the killer.
-- **Customer** 🟡 — CISO is the buyer; SOC manager is the champion; analyst is the user. Misaligning who you build for is the most common failure here.
+**Based on what you told me:**
+- Stage: idea, pre-build.
+- Model: enterprise subscription.
+- Customer: mid-market CISOs (50–500-person eng orgs).
+- Wedge: tier-1 alert triage for SOCs that don't have dedicated AI engineers.
+- Moat thesis: Switching Costs (env-specific tuning) + Process Power.
+- Current data: pre-launch theory.
 
-**Verdict:** 🟡 **Go with conditions.** Pick *one* design partner (a specific CISO who'll co-build), validate the agent on real alert data, and don't try to build a generalized product yet. The race is whether you can ship something genuinely useful before CrowdStrike ships "good enough" AI on their platform.
+*If any of this is wrong, tell me and I'll re-score.*
 
-**Biggest single risk:** Incumbent ships an AI feature that's 70% as good as yours but bundled free with existing license, eating your wedge.
+**Lens scorecard:**
+- **Market** 🟢 — Real budget (security ops), alert-volume growth is the painkiller; analyst burnout is a named, urgent problem.
+- **Moat** 🟡 — Switching Costs and Process Power are theoretically credible but unproven; CrowdStrike/Palo Alto can ship "good enough" AI on existing platforms.
+- **Product / Wedge** 🟢 — Painkiller for a named ICP. "Tier-1 triage" is narrow enough to win.
+- **Distribution** 🔴 — Enterprise security sale is 6–12 months, multi-stakeholder, SOC2 required. Slowest GTM in the wedge.
+- **Customer / Retention** 🟡 — Buyer (CISO) ≠ champion (SOC manager) ≠ user (analyst). Misalignment is the most common failure mode in this category.
+
+**🟡 Recommendation: Yellow light.**
+
+*Hitting:* clear painkiller, real budget, named ICP, defensible long-term moat path.
+
+*Missing or weak:* no proof the moat compounds before incumbents bundle, no validated GTM in a slow enterprise cycle, no design partner.
+
+*The test:* sign one named design-partner CISO who'll co-build on real alert data within 90 days, and ship a working triage agent against their alerts within 6 months that demonstrably reduces tier-1 analyst time by 30%+.
+
+*Pivot trigger:* if no design partner closes in 90 days, or CrowdStrike/Palo Alto announces a comparable AI feature before you ship, kill or pivot to a vertical incumbents won't touch.
+
+*Confidence:* medium. Would update with: actual conversations with 3+ CISOs, current incumbent product roadmaps, and code grounding once a prototype exists.
+
+*Want me to re-run this if you land a design partner or a competitor moves?*
 
 ### Example 3: Biotech
 
