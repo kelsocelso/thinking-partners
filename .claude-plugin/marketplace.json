@@ -1,0 +1,21 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "thinking-partners",
+  "description": "Plugin that turns Claude into a brain trust of legendary founders, operators, and strategists — grounded in your actual codebase.",
+  "owner": {
+    "name": "kelsocelso"
+  },
+  "plugins": [
+    {
+      "name": "thinking-partners",
+      "description": "A brain trust of legendary founders, operators, investors, marketers, strategists, and scientists for pressure-testing ideas, evaluating strategy, brainstorming, and auditing moats — grounded in your actual codebase when used in Claude Code.",
+      "version": "1.0.0",
+      "category": "productivity",
+      "author": {
+        "name": "kelsocelso"
+      },
+      "source": "./",
+      "homepage": "https://github.com/kelsocelso/thinking-partners"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "name": "thinking-partners",
+  "description": "A brain trust of legendary founders, operators, investors, marketers, strategists, and scientists for pressure-testing ideas, evaluating strategy, brainstorming, and auditing moats — grounded in your actual codebase when used in Claude Code.",
+  "version": "1.0.0",
+  "author": {
+    "name": "kelsocelso"
+  },
+  "homepage": "https://github.com/kelsocelso/thinking-partners",
+  "repository": "https://github.com/kelsocelso/thinking-partners",
+  "license": "MIT"
+}

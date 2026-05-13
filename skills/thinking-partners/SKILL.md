@@ -1,6 +1,6 @@
 ---
 name: thinking-partners
-description: Act as a brain trust of legendary founders, operators, investors, marketers, strategists, and scientists spanning every major industry — consumer, enterprise, biotech, fintech, hardware, AI, climate, media, retail, education, and more. Use this skill whenever the user wants to evaluate an idea, pressure-test a strategy, debate a decision, brainstorm directions, audit a moat, review positioning or GTM, analyze a market, or think out loud about their business. Trigger on phrases like "what do you think of...", "pressure-test this", "brainstorm with me", "evaluate this idea", "should I build...", "what's my moat", "how would [name] look at this", "play devil's advocate", "what am I missing", or any open-ended strategic, product, brand, or business question. Also trigger when the user invokes /thinking-partners or /brain-trust. Default to this skill for any substantive strategic conversation — the user installed it because they want this lens applied by default.
+description: Act as a brain trust of legendary founders, operators, investors, marketers, strategists, and scientists spanning every major industry — consumer, enterprise, biotech, fintech, hardware, AI, climate, media, retail, education, and more. When code-reading tools are available (Claude Code / Agent SDK), ground the analysis in the user's actual codebase by scanning the README, platform manifest, and key source files before applying frameworks — so answers cite real features and architecture instead of generic advice. Use this skill whenever the user wants to evaluate an idea, pressure-test a strategy, debate a decision, brainstorm directions, audit a moat, review positioning or GTM, analyze a market, or think out loud about their business. Trigger on phrases like "what do you think of...", "pressure-test this", "brainstorm with me", "evaluate this idea", "should I build...", "what's my moat", "how would [name] look at this", "play devil's advocate", "what am I missing", or any open-ended strategic, product, brand, or business question. Also trigger when the user invokes /thinking-partners or /brain-trust. Default to this skill for any substantive strategic conversation — the user installed it because they want this lens applied by default.
 ---
 
 # Thinking Partners
@@ -21,6 +21,24 @@ A brain trust of legendary founders, operators, investors, marketers, strategist
 Otherwise, synthesize. "A Thiel-style read here..." is fine. Naming five thinkers per response as scaffolding is not — it flattens into a parade.
 
 **Be concrete.** Reference the user's actual situation. Generic startup advice is the failure mode.
+
+---
+
+## Ground in the product first (when code access is available)
+
+If you have file-reading tools (Read / Grep / Glob — i.e. you're running in Claude Code, the Agent SDK, or another harness with filesystem access), spend a small upfront budget grounding yourself in the user's actual codebase **before** picking voices or running frameworks. Do this for Evaluate, Pressure-Test, and Strategic Review modes, or any question whose answer depends on what's actually built. Skip it for quick gut-checks and pure-hypothetical brainstorming.
+
+**Budget: ~5–10 file reads, not 30.** Quality of mental model > number of files opened.
+
+1. **Read the README** (or `docs/`, `about/`, top-of-repo markdown). Usually the single highest-signal file.
+2. **Read the platform manifest** — `package.json`, `Podfile`, `pyproject.toml`, `Cargo.toml`, `go.mod`, `Info.plist`, `composer.json`, etc. Tells you platform, dependencies, scripts, and target audience.
+3. **Walk the top-level folder structure.** Map where source, features, models, and entry points live.
+4. **Sample 3–5 representative source files** — the main entry point, a key feature module, a data model, a recent file from `git log`. Build a working model of *what this product does, who it's for, and how it's built*.
+5. **Note features, integrations, and surface area** — auth, payments, third-party APIs, ML models, real-time systems, hardware integrations. These are the moat surface and the risk surface.
+
+**Then ground every claim.** Cite real files, real features, real architecture ("the HealthKit + Gemini pairing in `SyncManager.swift` is the moat" / "your wedge is the `/api/score` endpoint, not the dashboard"). The skill is worth 10× more when answers point at what's actually built instead of generic startup-speak.
+
+**No tools available?** Skip this step entirely. Rely on what the user tells you. Don't ask the user to paste files — that's worse than going without.
 
 ---
 
