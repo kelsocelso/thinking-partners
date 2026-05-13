@@ -43,11 +43,11 @@ You can also invoke it explicitly: `/thinking-partners` or `/brain-trust`.
    ```bash
    # Project-level (only this project sees it)
    mkdir -p .claude/skills
-   git clone https://github.com/YOUR-USERNAME/thinking-partners.git .claude/skills/thinking-partners
+   git clone https://github.com/kelsocelso/thinking-partners.git .claude/skills/thinking-partners
 
    # OR user-level (all your projects see it)
    mkdir -p ~/.claude/skills
-   git clone https://github.com/YOUR-USERNAME/thinking-partners.git ~/.claude/skills/thinking-partners
+   git clone https://github.com/kelsocelso/thinking-partners.git ~/.claude/skills/thinking-partners
    ```
 2. Restart Claude Code if it was running.
 3. The skill will be auto-discovered and trigger on relevant prompts.
